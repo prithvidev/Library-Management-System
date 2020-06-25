@@ -5,6 +5,7 @@
  */
 package library.management;
 
+import java.awt.Color;
 import static java.lang.Thread.sleep;
 
 /**
@@ -25,6 +26,8 @@ public class loading extends javax.swing.JFrame {
             for(int i=min; i<= max;i++){
              q.setValue(i);
              q.setString(Integer.toString(i));
+             q.setBackground(Color.blue);
+             
              try{
                  sleep(50);
              }catch(Exception e){System.out.println("ERROR");}
@@ -60,6 +63,9 @@ public class loading extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/qaz.png"))); // NOI18N
+
+        q.setBackground(new java.awt.Color(0, 0, 255));
+        q.setStringPainted(true);
 
         jLabel1.setFont(new java.awt.Font("DialogInput", 1, 24)); // NOI18N
         jLabel1.setText("Please Wait.....");

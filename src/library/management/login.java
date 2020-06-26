@@ -6,6 +6,11 @@
 package library.management;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -253,10 +258,26 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_qMouseExited
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       loading n = new loading();
-       n.setVisible(true);
-       this.dispose();
-       
+       try{
+           String user = us.getText();
+           String pass = p.getText();
+           Connection con;
+           myconnection register = new myconnection();
+           con = register.getRegisterConnection();
+           String sql = "select * from record where username='"+user+"'&& password='"+pass+"'";
+           PreparedStatement p = con.prepareStatement(sql);
+           ResultSet rs = p.executeQuery(sql);
+           if(rs.next()){
+               loading n = new loading();
+                n.setVisible(true);
+                this.dispose();
+               JOptionPane.showMessageDialog(this, "DONE");
+           }
+           
+       }
+       catch(SQLException ex){
+           JOptionPane.showMessageDialog(this, "error");
+       }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

@@ -40,6 +40,7 @@ public class Registration extends javax.swing.JFrame {
      */
     String filename;
     byte[] p_image = null;
+    String w ;
     public Registration() {
         initComponents();
         a1.setVisible(false);
@@ -53,6 +54,21 @@ public class Registration extends javax.swing.JFrame {
         a9.setVisible(false);
         a10.setVisible(false);
         a11.setVisible(false);
+        try{
+            Connection con1;
+            myconnection reg = new myconnection();
+            con1 = reg.getRegisterConnection();
+            String sql = "select count(user_id) from record";
+            PreparedStatement pss = con1.prepareStatement(sql);
+            ResultSet rs1 = pss.executeQuery();
+            if(rs1.next()){
+                int w1 = Integer.parseInt(rs1.getString("count(user_id)"));
+                
+                int sum = 1000+w1+1;
+                w = Integer.toString(sum);
+            }
+        }
+        catch(Exception e){}
     }
 
     /**
@@ -588,6 +604,7 @@ public class Registration extends javax.swing.JFrame {
         String cit = city.getText();
         String district = dist.getText();
         String pincode = pinc.getText();
+        String wq = "DEV-".concat(w);
         Date date = new Date();
         if(fname.isEmpty() || lname.isEmpty() || birth.isEmpty() || mobile.isEmpty() || email.isEmpty() || pass.isEmpty() || user.isEmpty() || cit.isEmpty() || district.isEmpty() || pincode.isEmpty()){
         JOptionPane.showMessageDialog(null,"Check All Boxes");}
@@ -614,7 +631,7 @@ public class Registration extends javax.swing.JFrame {
                 q.setText("");
             }
             else{
-            String sql = "insert into record(first_name,last_name,dob,phno,email,username,password,city,address,pincode,image)values(?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into record(first_name,last_name,dob,phno,email,username,password,city,address,pincode,image,user_id)values(?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             
             ps.setString(1, fname);
@@ -628,7 +645,7 @@ public class Registration extends javax.swing.JFrame {
             ps.setString(9, district);
             ps.setString(10, pincode);
             ps.setBytes(11, p_image);
-            
+            ps.setString(12, wq);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "SUCCESSFULLY REGISTERED");
             }

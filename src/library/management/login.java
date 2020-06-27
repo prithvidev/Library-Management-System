@@ -6,10 +6,12 @@
 package library.management;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -211,11 +213,10 @@ public class login extends javax.swing.JFrame {
            String sql = "select * from record where username='"+user+"'&& password='"+pass+"'";
            PreparedStatement p = con.prepareStatement(sql);
            ResultSet rs = p.executeQuery(sql);
-           if(rs.next()){
-               loading n = new loading();
+           if(rs.next()){  
+               loading n = new loading(user);
                 n.setVisible(true);
                 this.dispose();
-               
            }
            
        }

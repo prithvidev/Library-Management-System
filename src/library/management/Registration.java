@@ -41,6 +41,15 @@ public class Registration extends javax.swing.JFrame {
         initComponents();
         a1.setVisible(false);
         a2.setVisible(false);
+        a3.setVisible(false);
+        a4.setVisible(false);
+        a5.setVisible(false);
+        a6.setVisible(false);
+        a7.setVisible(false);
+        a8.setVisible(false);
+        a9.setVisible(false);
+        a10.setVisible(false);
+        a11.setVisible(false);
     }
 
     /**
@@ -81,6 +90,7 @@ public class Registration extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         pinc = new javax.swing.JTextField();
         q = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -92,6 +102,9 @@ public class Registration extends javax.swing.JFrame {
         a6 = new javax.swing.JLabel();
         a7 = new javax.swing.JLabel();
         a8 = new javax.swing.JLabel();
+        a9 = new javax.swing.JLabel();
+        a10 = new javax.swing.JLabel();
+        a11 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -99,7 +112,6 @@ public class Registration extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -129,7 +141,7 @@ public class Registration extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 2, 28, 24));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/background.jpg"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, -1, -1));
@@ -255,6 +267,14 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 239, 64, 30));
 
         user1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        user1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                user1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                user1MouseExited(evt);
+            }
+        });
         user1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 user1ActionPerformed(evt);
@@ -266,6 +286,15 @@ public class Registration extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("PASSWORD");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 239, 64, 30));
+
+        pass1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pass1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pass1MouseExited(evt);
+            }
+        });
         jPanel1.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 239, 132, 31));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -274,6 +303,14 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 288, 64, 30));
 
         city.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        city.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cityMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cityMouseExited(evt);
+            }
+        });
         city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityActionPerformed(evt);
@@ -287,6 +324,14 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 288, 64, 30));
 
         dist.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        dist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                distMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                distMouseExited(evt);
+            }
+        });
         dist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 distActionPerformed(evt);
@@ -300,6 +345,14 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 337, 64, 30));
 
         pinc.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        pinc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pincMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pincMouseExited(evt);
+            }
+        });
         pinc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pincActionPerformed(evt);
@@ -315,7 +368,18 @@ public class Registration extends javax.swing.JFrame {
         q.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         q.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         q.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(q, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 386, 132, 122));
+        jPanel1.add(q, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 386, 132, 150));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 30, 30));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -323,6 +387,14 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 337, 64, 30));
 
         jButton3.setText("UPLOAD");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -350,7 +422,7 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 80, 20));
 
         a4.setText("Mobile Number");
-        jPanel1.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 80, 20));
+        jPanel1.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 90, 20));
 
         a5.setText("Email");
         jPanel1.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 40, 20));
@@ -361,11 +433,20 @@ public class Registration extends javax.swing.JFrame {
         a7.setText("Password");
         jPanel1.add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 70, -1));
 
-        a8.setText("CIty");
+        a8.setText("City");
         jPanel1.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 70, -1));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/background.jpg"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 470, 490));
+        a9.setText("District");
+        jPanel1.add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 60, -1));
+
+        a10.setText("Pincode");
+        jPanel1.add(a10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 80, -1));
+
+        a11.setText("Choose Image");
+        jPanel1.add(a11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 90, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 470, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -392,7 +473,7 @@ public class Registration extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        this.setVisible(false);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
@@ -573,6 +654,60 @@ public class Registration extends javax.swing.JFrame {
         a5.setVisible(false);
     }//GEN-LAST:event_emMouseExited
 
+    private void user1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user1MouseEntered
+        a6.setVisible(true);
+    }//GEN-LAST:event_user1MouseEntered
+
+    private void user1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user1MouseExited
+        a6.setVisible(false);
+    }//GEN-LAST:event_user1MouseExited
+
+    private void pass1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pass1MouseEntered
+        a7.setVisible(true);
+    }//GEN-LAST:event_pass1MouseEntered
+
+    private void pass1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pass1MouseExited
+        a7.setVisible(false);
+    }//GEN-LAST:event_pass1MouseExited
+
+    private void cityMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cityMouseEntered
+        a8.setVisible(true);
+    }//GEN-LAST:event_cityMouseEntered
+
+    private void cityMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cityMouseExited
+        a8.setVisible(false);
+    }//GEN-LAST:event_cityMouseExited
+
+    private void distMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distMouseEntered
+        a9.setVisible(true);
+    }//GEN-LAST:event_distMouseEntered
+
+    private void distMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distMouseExited
+        a9.setVisible(false);
+    }//GEN-LAST:event_distMouseExited
+
+    private void pincMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pincMouseEntered
+        a10.setVisible(true);
+    }//GEN-LAST:event_pincMouseEntered
+
+    private void pincMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pincMouseExited
+        a10.setVisible(false);
+    }//GEN-LAST:event_pincMouseExited
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        a11.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        a11.setVisible(false);
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        login h = new login();
+        this.dispose();
+        h.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -610,6 +745,8 @@ public class Registration extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel a1;
+    private javax.swing.JLabel a10;
+    private javax.swing.JLabel a11;
     private javax.swing.JLabel a2;
     private javax.swing.JLabel a3;
     private javax.swing.JLabel a4;
@@ -617,6 +754,7 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel a6;
     private javax.swing.JLabel a7;
     private javax.swing.JLabel a8;
+    private javax.swing.JLabel a9;
     private javax.swing.JTextField city;
     private javax.swing.JTextField dist;
     private com.toedter.calendar.JDateChooser dob;
@@ -627,6 +765,7 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -47,10 +47,10 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         us = new javax.swing.JTextField();
-        p = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        p = new javax.swing.JPasswordField();
         q = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
@@ -118,8 +118,7 @@ public class login extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/qww.png"))); // NOI18N
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 216, 33, 27));
-        jPanel1.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 169, 185, 27));
-        jPanel1.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 216, 185, 27));
+        jPanel1.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 169, 180, 27));
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setText("SIGN IN");
@@ -142,6 +141,7 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 11)); // NOI18N
         jLabel3.setText("Forgot Password,");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 294, -1, -1));
+        jPanel1.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 180, 30));
 
         q.setFont(new java.awt.Font("Times New Roman", 2, 11)); // NOI18N
         q.setForeground(new java.awt.Color(204, 0, 0));
@@ -283,7 +283,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField p;
+    private javax.swing.JPasswordField p;
     private javax.swing.JButton q;
     private javax.swing.JTextField us;
     // End of variables declaration//GEN-END:variables

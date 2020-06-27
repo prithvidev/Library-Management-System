@@ -45,7 +45,7 @@ public class userinfo extends javax.swing.JFrame {
                 dob.setText(rs.getString(3));
                 mob.setText(rs.getString(4));
                 ema.setText(rs.getString(5));
-                city.setText(sql);rs.getString(8);
+                city.setText(rs.getString(8));
                 dist.setText(rs.getString(9));
                 pincode.setText(rs.getString(10));
                 byte[] img = rs.getBytes(11);
@@ -97,6 +97,7 @@ public class userinfo extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -180,28 +181,52 @@ public class userinfo extends javax.swing.JFrame {
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 30, 30));
 
+        fn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        fn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 158, 30));
 
+        ln.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 158, 30));
 
+        dob.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        dob.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dob.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        dob.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 158, 30));
 
+        mob.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        mob.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mob.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mob.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 158, 30));
 
+        ema.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ema.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ema.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(ema, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 210, 30));
 
+        city.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        city.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         city.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        city.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(city, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 158, 30));
 
+        dist.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        dist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dist.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        dist.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(dist, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 158, 30));
 
+        pincode.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        pincode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pincode.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pincode.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(pincode, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 158, 30));
 
         q.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -209,10 +234,16 @@ public class userinfo extends javax.swing.JFrame {
         q.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(q, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 132, 150));
 
+        uu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        uu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         uu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        uu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(uu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 132, 32));
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,12 +257,12 @@ public class userinfo extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(490, 458));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -5,6 +5,7 @@
  */
 package library.management;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.ByteArrayOutputStream;
@@ -12,8 +13,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -67,7 +70,6 @@ public class Registration extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -115,6 +117,7 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -141,10 +144,7 @@ public class Registration extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 2, 28, 24));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 30));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -446,7 +446,7 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(a11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 90, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 470, 510));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -588,10 +588,32 @@ public class Registration extends javax.swing.JFrame {
         String cit = city.getText();
         String district = dist.getText();
         String pincode = pinc.getText();
-        try{
+        Date date = new Date();
+        if(fname.isEmpty() || lname.isEmpty() || birth.isEmpty() || mobile.isEmpty() || email.isEmpty() || pass.isEmpty() || user.isEmpty() || cit.isEmpty() || district.isEmpty() || pincode.isEmpty()){
+        JOptionPane.showMessageDialog(null,"Check All Boxes");}
+        else {
+            try{
             Connection con;
             myconnection register = new myconnection();
             con = register.getRegisterConnection();
+            String sql1 = "select * from record where email='"+email+"'&& username='"+user+"'&& password='"+pass+"'&& phno="+mobile;
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ResultSet rs = ps1.executeQuery();
+            if(rs.next()){
+                JOptionPane.showMessageDialog(this, "Already Exists");
+                fn.setText("");
+                ln.setText("");
+                dob.setDate(date);
+                mob.setText("");
+                em.setText("");
+                pass1.setText("");
+                user1.setText("");
+                city.setText("");
+                dist.setText("");
+                pinc.setText("");
+                q.setText("");
+            }
+            else{
             String sql = "insert into record(first_name,last_name,dob,phno,email,username,password,city,address,pincode,image)values(?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -609,8 +631,10 @@ public class Registration extends javax.swing.JFrame {
             
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "SUCCESSFULLY REGISTERED");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -772,7 +796,6 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

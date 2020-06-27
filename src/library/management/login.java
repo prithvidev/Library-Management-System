@@ -136,6 +136,11 @@ public class login extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton4.setText("SIGN UP");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 11)); // NOI18N
         jLabel3.setText("Forgot Password,");
@@ -271,7 +276,7 @@ public class login extends javax.swing.JFrame {
                loading n = new loading();
                 n.setVisible(true);
                 this.dispose();
-               JOptionPane.showMessageDialog(this, "DONE");
+               
            }
            
        }
@@ -279,6 +284,12 @@ public class login extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "error");
        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Registration r = new Registration();
+        this.dispose();
+        r.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

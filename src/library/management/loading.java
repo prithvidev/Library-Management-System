@@ -35,7 +35,7 @@ public class loading extends javax.swing.JFrame {
             int qq = q.getMaximum();
             if(qq == 100){
                 setVisible(false);
-            Registration  nw = new Registration();
+            dashboard  nw = new dashboard();
             nw.setVisible(true);
         }
         }

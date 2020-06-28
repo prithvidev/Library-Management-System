@@ -100,7 +100,7 @@ public final class dashboard extends javax.swing.JFrame {
                 jButton25jButton1ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 2, 28, 24));
+        jPanel6.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 28, 24));
 
         jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/minimize.png"))); // NOI18N
         jButton26.setContentAreaFilled(false);
@@ -109,7 +109,7 @@ public final class dashboard extends javax.swing.JFrame {
                 jButton26jButton2ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 2, 28, 24));
+        jPanel6.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 28, 24));
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/qaz.png"))); // NOI18N
@@ -119,6 +119,11 @@ public final class dashboard extends javax.swing.JFrame {
         jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/add.png"))); // NOI18N
         jButton27.setContentAreaFilled(false);
         jButton27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 194, 92, 80));
 
         jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/graph.png"))); // NOI18N
@@ -229,6 +234,13 @@ public final class dashboard extends javax.swing.JFrame {
         uu.setVisible(true);
     }//GEN-LAST:event_jButton32jButton8ActionPerformed
 
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        this.dispose();
+        newBook nb = new newBook();
+        nb.setVisible(true);
+                
+    }//GEN-LAST:event_jButton27ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,58 +277,24 @@ public final class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
 }

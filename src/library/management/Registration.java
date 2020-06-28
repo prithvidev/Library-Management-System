@@ -401,6 +401,7 @@ public class Registration extends javax.swing.JFrame {
         jLabel14.setText("IMAGE");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 337, 64, 30));
 
+        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton3.setText("UPLOAD");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {

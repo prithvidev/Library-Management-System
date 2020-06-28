@@ -67,6 +67,7 @@ public final class dashboard extends javax.swing.JFrame {
         jButton32 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -197,6 +198,15 @@ public final class dashboard extends javax.swing.JFrame {
         jLabel34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel6.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 280, 92, 27));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/logout.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 30, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 450));
@@ -241,6 +251,13 @@ public final class dashboard extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_jButton27ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        login l = new login();
+        l.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +294,7 @@ public final class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;

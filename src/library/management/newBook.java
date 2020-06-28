@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -285,12 +287,16 @@ public class newBook extends javax.swing.JFrame {
         String pub = publish.getText();
         String sec = type.getText();
         String pr = price.getText();
-        if(bookid.isEmpty() || bookname.isEmpty() || author.isEmpty() || pub.isEmpty() || sec.isEmpty() || pr.isEmpty()){
+        if(bookid.isEmpty() || bookname.isEmpty() || author.isEmpty() || pub.isEmpty() || sec.isEmpty() || pr.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Fill all the boxes");
+        }
+        else{
             try{
                 Connection con;
                 myconnection reg = new myconnection();
                 con = reg.getRegisterConnection();
-                String sql = "Select * from book where book_id ="+bookid;
+                String sql = "Select * from book where book_id ='"+bookid+"'";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()){
@@ -314,13 +320,19 @@ public class newBook extends javax.swing.JFrame {
                     
                     ps1.executeUpdate();
                     JOptionPane.showMessageDialog(this,"New Book added successfully");
+                     bid.setText("");
+                    bname.setText("");
+                    auth.setText("");
+                    publish.setText("");
+                    type.setText("");
+                    price.setText("");
                 }
+            } catch (SQLException ex) {
+                Logger.getLogger(newBook.class.getName()).log(Level.SEVERE, null, ex);
             }
-            catch(SQLException ex){
-                JOptionPane.showMessageDialog(this, "ERROR");
-            }
+            
         }
-        else{JOptionPane.showMessageDialog(this, "Fill all the boxes");}
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

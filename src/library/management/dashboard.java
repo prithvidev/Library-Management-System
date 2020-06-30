@@ -243,7 +243,7 @@ public final class dashboard extends javax.swing.JFrame {
                 jButton25jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 28, 24));
+        jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 28, 24));
 
         jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/minimize.png"))); // NOI18N
         jButton26.setContentAreaFilled(false);
@@ -252,9 +252,9 @@ public final class dashboard extends javax.swing.JFrame {
                 jButton26jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 28, 24));
+        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 28, 24));
 
-        jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 570, 30));
+        jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
         jLabel1.setRequestFocusEnabled(false);
@@ -323,7 +323,9 @@ public final class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void addnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnewActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        addnewcustomer cust = new addnewcustomer();
+        cust.setVisible(true);
     }//GEN-LAST:event_addnewActionPerformed
 
     private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered

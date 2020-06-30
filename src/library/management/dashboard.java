@@ -65,7 +65,9 @@ public final class dashboard extends javax.swing.JFrame {
         jButton32 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
+        addnew = new javax.swing.JButton();
+        dd = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
@@ -176,14 +178,43 @@ public final class dashboard extends javax.swing.JFrame {
         jLabel34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel6.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 280, 92, 27));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/logout.png"))); // NOI18N
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/logout.png"))); // NOI18N
+        logout.setContentAreaFilled(false);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
             }
         });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 30, 30));
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+        jPanel6.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 30, 30));
+
+        addnew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/addnew.png"))); // NOI18N
+        addnew.setContentAreaFilled(false);
+        addnew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addnewMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addnewMouseExited(evt);
+            }
+        });
+        addnew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addnewActionPerformed(evt);
+            }
+        });
+        jPanel6.add(addnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 30, 30));
+
+        dd.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        dd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 120, 20));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
@@ -212,7 +243,7 @@ public final class dashboard extends javax.swing.JFrame {
                 jButton25jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 28, 24));
+        jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 28, 24));
 
         jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/minimize.png"))); // NOI18N
         jButton26.setContentAreaFilled(false);
@@ -221,13 +252,13 @@ public final class dashboard extends javax.swing.JFrame {
                 jButton26jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 28, 24));
+        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 28, 24));
 
         jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 570, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
         jLabel1.setRequestFocusEnabled(false);
-        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 490));
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,12 +304,12 @@ public final class dashboard extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_jButton27ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         this.dispose();
         login l = new login();
         l.setVisible(true);
         JOptionPane.showMessageDialog(this, "Logged Out");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_logoutActionPerformed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         xmouse = evt.getX();
@@ -290,6 +321,28 @@ public final class dashboard extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x-xmouse, y-ymouse);
     }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void addnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addnewActionPerformed
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        dd.setVisible(true);
+        dd.setText("Logout");
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        dd.setVisible(false);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void addnewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnewMouseEntered
+        dd.setVisible(true);
+        dd.setText("Add New Customer");
+    }//GEN-LAST:event_addnewMouseEntered
+
+    private void addnewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnewMouseExited
+        dd.setVisible(false);
+    }//GEN-LAST:event_addnewMouseExited
 
     /**
      * @param args the command line arguments
@@ -327,7 +380,8 @@ public final class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addnew;
+    private javax.swing.JLabel dd;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
@@ -348,5 +402,6 @@ public final class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JButton logout;
     // End of variables declaration//GEN-END:variables
 }

@@ -568,6 +568,7 @@ public class Registration extends javax.swing.JFrame {
     if(!m.matches()){
         error.setIcon(new ImageIcon("E:\\Netbeans project new\\Email\\src\\email\\Danger.png"));
         em.setText("");
+        em.requestFocus(true);
     }
     else{
             error.setIcon(new ImageIcon("E:\\Netbeans project new\\Email\\src\\email\\Yes.png"));

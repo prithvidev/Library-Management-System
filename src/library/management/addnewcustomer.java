@@ -28,8 +28,29 @@ public class addnewcustomer extends javax.swing.JFrame {
     /** Creates new form addnewcustomer */
     
     int xmouse, ymouse;
+    String wq ;
+        
+    
+    String w;
     public addnewcustomer() {
         initComponents();
+        try{
+            Connection con1;
+            myconnection reg = new myconnection();
+            con1 = reg.getRegisterConnection();
+            String sql = "select count(CustomerID) from Customer";
+            PreparedStatement pss = con1.prepareStatement(sql);
+            ResultSet rs1 = pss.executeQuery();
+            if(rs1.next()){
+                int w1 = Integer.parseInt(rs1.getString("count(CustomerID)"));
+                
+                int sum = 1000+w1;
+                w = Integer.toString(sum);
+                wq = "CDL-".concat(w);
+                cid.setText(wq);
+            }
+        }
+        catch(Exception e){}
     }
 
     /** This method is called from within the constructor to
@@ -380,7 +401,7 @@ public class addnewcustomer extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Date date = new Date();
-        String Cust_id = cid.getText();
+        
         String Cust_name = cn.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String birth = sdf.format(dob.getDate());
@@ -391,7 +412,7 @@ public class addnewcustomer extends javax.swing.JFrame {
         String address = add.getText();
         String pincode = pc.getText();
         
-        if(Cust_id.isEmpty() || Cust_name.isEmpty() || birth.isEmpty() || phone.isEmpty() || email.isEmpty() || pass.isEmpty() || join.isEmpty() || address.isEmpty() || pincode.isEmpty()){
+        if(Cust_name.isEmpty() || birth.isEmpty() || phone.isEmpty() || email.isEmpty() || pass.isEmpty() || join.isEmpty() || address.isEmpty() || pincode.isEmpty()){
             JOptionPane.showMessageDialog(this,"Check All the Boxes");
         }
         else{
@@ -399,12 +420,12 @@ public class addnewcustomer extends javax.swing.JFrame {
                 Connection con;
                 myconnection reg = new myconnection();
                 con = reg.getRegisterConnection();
-                String sql = "select * from Customer where CustomerID = '"+Cust_id+"'";
+                String sql = "select * from Customer where CustomerID = '"+wq+"'";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()){
                 JOptionPane.showMessageDialog(this, "Already Exist");
-                cid.setText("");
+               
                 cn.setText("");
                 dob.setDate(date);
                 mob.setText("");
@@ -418,7 +439,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                 String sql1 = "insert into Customer(CustomerID,Customername,DateOfBirth,Mobile,email,password,DateOfJoin,Address,Pincode)values(?,?,?,?,?,?,?,?,?)";
                 PreparedStatement ps1 = con.prepareStatement(sql1);
                 
-                ps1.setString(1, Cust_id);
+                ps1.setString(1, wq);
                 ps1.setString(2, Cust_name);
                 ps1.setString(3, birth);
                 ps1.setString(4, phone);
@@ -430,7 +451,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                 
                 ps1.executeUpdate();
                 JOptionPane.showMessageDialog(this, "New Customer Added Successfully");
-                cid.setText("");
+                cid.setText(wq);
                 cn.setText("");
                 dob.setDate(date);
                 mob.setText("");

@@ -6,9 +6,18 @@
 
 package library.management;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,7 +57,6 @@ public class addnewcustomer extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         em = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        p = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         doj = new com.toedter.calendar.JDateChooser();
@@ -58,6 +66,7 @@ public class addnewcustomer extends javax.swing.JFrame {
         pc = new javax.swing.JTextField();
         dob = new com.toedter.calendar.JDateChooser();
         error = new javax.swing.JLabel();
+        p = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -88,7 +97,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                 jButton26jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 28, 24));
+        jPanel2.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 28, 24));
 
         jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/exit.png"))); // NOI18N
         jButton25.setContentAreaFilled(false);
@@ -97,7 +106,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                 jButton25jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 28, 24));
+        jPanel2.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 28, 24));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -157,15 +166,13 @@ public class addnewcustomer extends javax.swing.JFrame {
         jLabel5.setText("Password");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        p.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        p.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pActionPerformed(evt);
-            }
-        });
-
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton1.setText("ADD");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -206,7 +213,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -238,7 +245,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(p)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -271,15 +278,17 @@ public class addnewcustomer extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(em, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(17, 17, 17)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                                    .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(doj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,9 +311,9 @@ public class addnewcustomer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -316,7 +325,7 @@ public class addnewcustomer extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(383, 544));
+        setSize(new java.awt.Dimension(387, 544));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -350,16 +359,12 @@ public class addnewcustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cnActionPerformed
 
-    private void pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pActionPerformed
-
     private void pcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pcActionPerformed
 
     private void emFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emFocusLost
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+    String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
     Pattern p = Pattern.compile(regex);
     Matcher m = p.matcher(em.getText());
     
@@ -372,6 +377,75 @@ public class addnewcustomer extends javax.swing.JFrame {
             error.setIcon(new ImageIcon("E:\\Netbeans project new\\Email\\src\\email\\Yes.png"));
          }
     }//GEN-LAST:event_emFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Date date = new Date();
+        String Cust_id = cid.getText();
+        String Cust_name = cn.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String birth = sdf.format(dob.getDate());
+        String phone = mob.getText();
+        String email = em.getText();
+        String pass = p.getText();
+        String join = sdf.format(doj.getDate());
+        String address = add.getText();
+        String pincode = pc.getText();
+        
+        if(Cust_id.isEmpty() || Cust_name.isEmpty() || birth.isEmpty() || phone.isEmpty() || email.isEmpty() || pass.isEmpty() || join.isEmpty() || address.isEmpty() || pincode.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Check All the Boxes");
+        }
+        else{
+            try{
+                Connection con;
+                myconnection reg = new myconnection();
+                con = reg.getRegisterConnection();
+                String sql = "select * from Customer where CustomerID = '"+Cust_id+"'";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                JOptionPane.showMessageDialog(this, "Already Exist");
+                cid.setText("");
+                cn.setText("");
+                dob.setDate(date);
+                mob.setText("");
+                em.setText("");
+                p.setText("");
+                doj.setDate(date);
+                add.setText("");
+                pc.setText("");
+                }
+                else{
+                String sql1 = "insert into Customer(CustomerID,Customername,DateOfBirth,Mobile,email,password,DateOfJoin,Address,Pincode)values(?,?,?,?,?,?,?,?,?)";
+                PreparedStatement ps1 = con.prepareStatement(sql1);
+                
+                ps1.setString(1, Cust_id);
+                ps1.setString(2, Cust_name);
+                ps1.setString(3, birth);
+                ps1.setString(4, phone);
+                ps1.setString(5, email);
+                ps1.setString(6, pass);
+                ps1.setString(7, join);
+                ps1.setString(8, address);
+                ps1.setString(9, pincode);
+                
+                ps1.executeUpdate();
+                JOptionPane.showMessageDialog(this, "New Customer Added Successfully");
+                cid.setText("");
+                cn.setText("");
+                dob.setDate(date);
+                mob.setText("");
+                em.setText("");
+                p.setText("");
+                doj.setDate(date);
+                add.setText("");
+                pc.setText("");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(addnewcustomer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,7 +507,7 @@ public class addnewcustomer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField mob;
-    private javax.swing.JTextField p;
+    private javax.swing.JPasswordField p;
     private javax.swing.JTextField pc;
     // End of variables declaration//GEN-END:variables
 

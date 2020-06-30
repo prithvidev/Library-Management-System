@@ -660,6 +660,17 @@ public class Registration extends javax.swing.JFrame {
             ps.setString(12, wq);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "SUCCESSFULLY REGISTERED");
+            fn.setText("");
+                ln.setText("");
+                dob.setDate(date);
+                mob.setText("");
+                em.setText("");
+                pass1.setText("");
+                user1.setText("");
+                city.setText("");
+                dist.setText("");
+                pinc.setText("");
+                q.setText("");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);

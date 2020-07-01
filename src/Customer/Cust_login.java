@@ -193,7 +193,7 @@ public class Cust_login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        try{
-           String Cust_id = custid.getText();
+           String Cust_id = custid.getText(); 
            String pass = p.getText();
            Connection con;
            myconnection register = new myconnection();

@@ -5,6 +5,16 @@
  */
 package Customer;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import library.management.myconnection;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author PrithviDevKumar
@@ -21,8 +31,38 @@ public class Cust_issue_detail extends javax.swing.JFrame {
     }
     public Cust_issue_detail(String Cust_id){
         initComponents();
+        a1.setVisible(false);
         user = Cust_id;
-        
+        tableDisplay();
+        name();
+    }
+    public final void tableDisplay(){
+        try {
+            Connection con;
+            myconnection registercon = new myconnection();
+            con = registercon.getRegisterConnection();
+            String displayquery = "select book_id,book_name,author from book where book_id = 'LIB-0001'";
+            PreparedStatement p = con.prepareStatement(displayquery);
+            ResultSet rs = p.executeQuery();
+            tab.setModel(DbUtils.resultSetToTableModel(rs));
+
+    }
+    catch (SQLException ex) {
+            Logger.getLogger(Cust_issue_detail.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
+    public void name(){
+        try{
+            Connection con;
+            myconnection reg = new myconnection();
+            con = reg.getRegisterConnection();
+            String sql1 = "Select * from Customer where CustomerID='"+user+"'";
+            PreparedStatement ps = con.prepareStatement(sql1);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+            name.setText("Hello!!"+" "+rs.getString(2));}
+        }catch(SQLException ex){ }
     }
 
     /**
@@ -41,13 +81,20 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tab = new javax.swing.JTable();
+        a1 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setOpaque(false);
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -86,40 +133,48 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 28, 24));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 431, 30));
+
+        tab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tab.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        tab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Book ID", "Book Author", "Book Name", "Date of Issue"
+                "book_id", "author", "book_name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
         });
-        jTable1.setOpaque(false);
-        jTable1.getTableHeader().setResizingAllowed(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        tab.setOpaque(false);
+        tab.getTableHeader().setResizingAllowed(false);
+        tab.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tab);
+        if (tab.getColumnModel().getColumnCount() > 0) {
+            tab.getColumnModel().getColumn(0).setResizable(false);
+            tab.getColumnModel().getColumn(1).setResizable(false);
         }
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 411, 289));
+
+        a1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        a1.setText("Print ID Card");
+        jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 80, 20));
+
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 220, 30));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -130,43 +185,29 @@ public class Cust_issue_detail extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 30, 30));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Customer/info.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton6MouseExited(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 30, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,7 +220,8 @@ public class Cust_issue_detail extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(431, 409));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -214,6 +256,14 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         id.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseEntered
+        a1.setVisible(true);
+    }//GEN-LAST:event_jButton6MouseEntered
+
+    private void jButton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseExited
+        a1.setVisible(false);
+    }//GEN-LAST:event_jButton6MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -221,7 +271,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -250,15 +300,18 @@ public class Cust_issue_detail extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel a1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel name;
+    private javax.swing.JTable tab;
     // End of variables declaration//GEN-END:variables
 }

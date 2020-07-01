@@ -120,6 +120,11 @@ public final class dashboard extends javax.swing.JFrame {
         jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/issue.png"))); // NOI18N
         jButton30.setContentAreaFilled(false);
         jButton30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 336, 92, 80));
 
         jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/return.png"))); // NOI18N
@@ -345,6 +350,12 @@ public final class dashboard extends javax.swing.JFrame {
     private void addnewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnewMouseExited
         dd.setVisible(false);
     }//GEN-LAST:event_addnewMouseExited
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        this.dispose();
+        issuebook ib = new issuebook();
+        ib.setVisible(true);
+    }//GEN-LAST:event_jButton30ActionPerformed
 
     /**
      * @param args the command line arguments

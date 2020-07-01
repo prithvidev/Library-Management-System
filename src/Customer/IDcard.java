@@ -5,12 +5,19 @@
  */
 package Customer;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import library.management.addnewcustomer;
 import library.management.myconnection;
 
@@ -65,7 +72,7 @@ public class IDcard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        MainPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         img = new javax.swing.JLabel();
         cid = new javax.swing.JLabel();
@@ -73,7 +80,7 @@ public class IDcard extends javax.swing.JFrame {
         dob = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         ph = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        mainLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -86,40 +93,39 @@ public class IDcard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Customer/qaz111.jpg"))); // NOI18N
         jLabel2.setText("Dev Library");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 380, -1));
+        MainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 380, -1));
 
         img.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(img, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 39, 107, 130));
+        MainPanel.add(img, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 107, 130));
 
-        cid.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        cid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 39, 222, 19));
+        MainPanel.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 222, 20));
 
-        cn.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        cn.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 75, 222, 19));
+        MainPanel.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 222, 20));
 
-        dob.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        dob.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         dob.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 100, 222, 19));
+        MainPanel.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 222, 20));
 
-        email.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        email.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 125, 222, 19));
+        MainPanel.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 222, 20));
 
-        ph.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        ph.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(ph, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 150, 222, 19));
+        MainPanel.add(ph, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 222, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 180));
+        mainLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        MainPanel.add(mainLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 190));
 
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -165,33 +171,36 @@ public class IDcard extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton3.setText("Print");
         jButton3.setContentAreaFilled(false);
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 100, -1));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 100, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 40));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(381, 249));
+        setSize(new java.awt.Dimension(381, 270));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -214,6 +223,10 @@ public class IDcard extends javax.swing.JFrame {
         int y =evt.getYOnScreen();
         this.setLocation(x-xmouse, y-ymouse);
     }//GEN-LAST:event_jLabel5MouseDragged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        printRecord(MainPanel);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +264,7 @@ public class IDcard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel cid;
     private javax.swing.JLabel cn;
     private javax.swing.JLabel dob;
@@ -261,12 +275,40 @@ public class IDcard extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel mainLabel;
     private javax.swing.JLabel ph;
     // End of variables declaration//GEN-END:variables
+    private void printRecord(JPanel Panel){
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setJobName("Print Record");
+        job.setPrintable(new Printable() {
+            @Override
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if(pageIndex > 0){
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2D = (Graphics2D)graphics;
+                graphics2D.translate(pageFormat.getImageableX()*2 , pageFormat.getImageableY()*2);
+                graphics2D.scale(0.5, 0.5);//default 0.3
+                Panel.paint(graphics2D);
+                return Printable.PAGE_EXISTS;
+            }
+        });
+        boolean returnResult = job.printDialog();
+        if(returnResult){
+            try{
+                job.print();
+            }
+            catch(PrinterException ex){
+                JOptionPane.showMessageDialog(this, "Printer Error:"+ex.getMessage());
+            }
+        
+        }
+        
+    }
+
 }

@@ -203,7 +203,7 @@ public class Cust_login extends javax.swing.JFrame {
            ResultSet rs = p.executeQuery(sql);
            if(rs.next()){ 
                this.dispose();
-               IDcard n = new IDcard(Cust_id);
+               Cust_issue_detail n = new Cust_issue_detail(Cust_id);
                 n.setVisible(true);
            }
            

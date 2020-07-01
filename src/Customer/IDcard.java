@@ -15,10 +15,10 @@ import java.awt.print.PrinterJob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import library.management.addnewcustomer;
 import library.management.myconnection;
 
 public class IDcard extends javax.swing.JFrame {
@@ -35,7 +35,7 @@ public class IDcard extends javax.swing.JFrame {
         cust = Cust_id;
         profilepic();
     }
-    public void profilepic(){
+    public final void profilepic(){
         try{
             Connection con;
             myconnection reg = new myconnection();
@@ -54,7 +54,7 @@ public class IDcard extends javax.swing.JFrame {
                 img.setIcon(imgg);
             }
         }
-        catch(Exception ex){}
+        catch(SQLException ex){}
     }
 
     /**
@@ -256,22 +256,16 @@ public class IDcard extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IDcard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IDcard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IDcard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(IDcard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IDcard().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new IDcard().setVisible(true);
         });
     }
 
@@ -298,18 +292,15 @@ public class IDcard extends javax.swing.JFrame {
     private void printRecord(JPanel Panel){
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Record");
-        job.setPrintable(new Printable() {
-            @Override
-            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
-                if(pageIndex > 0){
-                    return Printable.NO_SUCH_PAGE;
-                }
-                Graphics2D graphics2D = (Graphics2D)graphics;
-                graphics2D.translate(pageFormat.getImageableX()*2 , pageFormat.getImageableY()*2);
-                graphics2D.scale(0.5, 0.5);//default 0.3
-                Panel.paint(graphics2D);
-                return Printable.PAGE_EXISTS;
+        job.setPrintable((Graphics graphics, PageFormat pageFormat, int pageIndex) -> {
+            if(pageIndex > 0){
+                return Printable.NO_SUCH_PAGE;
             }
+            Graphics2D graphics2D = (Graphics2D)graphics;
+            graphics2D.translate(pageFormat.getImageableX()*2 , pageFormat.getImageableY()*2);
+            graphics2D.scale(0.5, 0.5);//default 0.3
+            Panel.paint(graphics2D);
+            return Printable.PAGE_EXISTS;
         });
         boolean returnResult = job.printDialog();
         if(returnResult){

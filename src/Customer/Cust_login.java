@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import library.management.loading;
 import library.management.myconnection;
 
 /**
@@ -199,8 +198,8 @@ public class Cust_login extends javax.swing.JFrame {
            myconnection register = new myconnection();
            con = register.getRegisterConnection();
            String sql = "select * from customer where CustomerID='"+Cust_id+"'&& password='"+pass+"'";
-           PreparedStatement p = con.prepareStatement(sql);
-           ResultSet rs = p.executeQuery(sql);
+           PreparedStatement ps = con.prepareStatement(sql);
+           ResultSet rs = ps.executeQuery(sql);
            if(rs.next()){ 
                this.dispose();
                Cust_issue_detail n = new Cust_issue_detail(Cust_id);
@@ -229,23 +228,18 @@ public class Cust_login extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cust_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cust_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cust_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Cust_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
+        
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cust_login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Cust_login().setVisible(true);
         });
     }
 

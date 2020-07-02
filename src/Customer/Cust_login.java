@@ -146,11 +146,9 @@ public class Cust_login extends javax.swing.JFrame {
                     .addComponent(custid, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(jButton3)
                 .addGap(0, 16, Short.MAX_VALUE))
         );
@@ -191,7 +189,11 @@ public class Cust_login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       try{
+        String c = custid.getText();
+        String o = p.getText();
+        if(c.isEmpty() || o.isEmpty()){JOptionPane.showMessageDialog(this, "Enter the details");}
+        else{
+        try{
            String Cust_id = custid.getText(); 
            String pass = p.getText();
            Connection con;
@@ -205,11 +207,21 @@ public class Cust_login extends javax.swing.JFrame {
                Cust_issue_detail n = new Cust_issue_detail(Cust_id);
                 n.setVisible(true);
            }
-           
+           else{
+               String sql1 = "Select * from customer where CustomerID='"+Cust_id+"'";
+               PreparedStatement pss = con.prepareStatement(sql1);
+               ResultSet rs1 = pss.executeQuery();
+               if(!rs1.next()){
+                   JOptionPane.showMessageDialog(this, "INAVLID CUSTOMER ID");
+               }
+               else{JOptionPane.showMessageDialog(this, "Inavlid Paassword");}
+           }
        }
        catch(SQLException ex){
            JOptionPane.showMessageDialog(this, "error");
        }
+    }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

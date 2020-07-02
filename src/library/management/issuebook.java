@@ -389,6 +389,16 @@ public class issuebook extends javax.swing.JFrame {
     }//GEN-LAST:event_returnDateFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String bid1 = bid.getText();
+        String bname1 = bname.getText();
+        String auth1 = auth.getText();
+        String cid1 = cid.getText();
+        String cn1 = cn.getText();
+        String mob1 = mob.getText();
+        String rd = returnDate.getText();
+        if(bid1.isEmpty() || bname1.isEmpty() || auth1.isEmpty() || cid1.isEmpty() || cn1.isEmpty() || mob1.isEmpty() || rd.isEmpty())
+        { JOptionPane.showMessageDialog(this, "Enter all details"); }
+        else{
         try{
             Connection con;
             myconnection reg = new myconnection();
@@ -419,6 +429,7 @@ public class issuebook extends javax.swing.JFrame {
             returnDate.setText("");
         }
         catch(SQLException ex){}
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

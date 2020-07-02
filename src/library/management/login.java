@@ -6,12 +6,10 @@
 package library.management;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -217,25 +215,36 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_qMouseExited
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       try{
-           String user = us.getText();
-           String pass = p.getText();
+        String user = us.getText();
+        String pass = p.getText();
+        if(user.isEmpty() || pass.isEmpty()){JOptionPane.showMessageDialog(this, "Enter all Details");}
+        else{
+        try{
            Connection con;
            myconnection register = new myconnection();
            con = register.getRegisterConnection();
            String sql = "select * from record where username='"+user+"'&& password='"+pass+"'";
-           PreparedStatement p = con.prepareStatement(sql);
-           ResultSet rs = p.executeQuery(sql);
+           PreparedStatement ps = con.prepareStatement(sql);
+           ResultSet rs = ps.executeQuery(sql);
            if(rs.next()){  
                loading n = new loading(user);
                 n.setVisible(true);
                 this.dispose();
            }
-           
+           else{
+               String sql1 = "select * from record where username = '"+user+"'";
+               PreparedStatement pss = con.prepareStatement(sql1);
+               ResultSet rs1 = pss.executeQuery();
+               if(!rs1.next()){
+                   JOptionPane.showMessageDialog(this,"INVALID EMAIL");
+               }
+               else{JOptionPane.showMessageDialog(this,"INVALID PASSWORD");}
+           }
        }
        catch(SQLException ex){
            JOptionPane.showMessageDialog(this, "error");
        }
+     }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -271,22 +280,16 @@ public class login extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new login().setVisible(true);
         });
     }
 

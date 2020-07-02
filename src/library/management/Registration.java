@@ -5,12 +5,12 @@
  */
 package library.management;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -69,7 +68,7 @@ public class Registration extends javax.swing.JFrame {
                 w = Integer.toString(sum);
             }
         }
-        catch(Exception e){}
+        catch(NumberFormatException | SQLException e){}
     }
 
     /**
@@ -554,7 +553,7 @@ public class Registration extends javax.swing.JFrame {
            }
            p_image = bos.toByteArray();
        }
-       catch(Exception ex){
+       catch(IOException ex){
            JOptionPane.showMessageDialog(this,"ERROR2");
        }
        
@@ -799,22 +798,16 @@ public class Registration extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registration().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Registration().setVisible(true);
         });
     }
 

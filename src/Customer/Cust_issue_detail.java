@@ -229,7 +229,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setExtendedState(Cust_login.ICONIFIED);
+        this.setExtendedState(Cust_issue_detail.ICONIFIED);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged

@@ -5,6 +5,15 @@
  */
 package library.management;
 
+import Customer.Cust_issue_detail;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author PrithviDevKumar
@@ -16,6 +25,40 @@ public class statistics extends javax.swing.JFrame {
      */
     public statistics() {
         initComponents();
+        issuetableDisplay();
+        returntableDisplay();
+    }
+    
+    public final void issuetableDisplay(){
+        try {
+            Connection con;
+            myconnection registercon = new myconnection();
+            con = registercon.getRegisterConnection();
+            String displayquery = "select bookname,author,dateofissue,customername,mobile,dateofreturn from issuebook";
+            PreparedStatement p = con.prepareStatement(displayquery);
+            ResultSet rs = p.executeQuery();
+            tab1.setModel(DbUtils.resultSetToTableModel(rs));
+
+    }
+    catch (SQLException ex) {
+            Logger.getLogger(Cust_issue_detail.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+    
+    public final void returntableDisplay(){
+        try {
+            Connection con;
+            myconnection registercon = new myconnection();
+            con = registercon.getRegisterConnection();
+            String displayquery = "select customername,mobile,bookname,author,dateofissue,dateofreturn,latefee,finestatus from returnbook";
+            PreparedStatement p = con.prepareStatement(displayquery);
+            ResultSet rs = p.executeQuery();
+            tab2.setModel(DbUtils.resultSetToTableModel(rs));
+
+    }
+    catch (SQLException ex) {
+            Logger.getLogger(Cust_issue_detail.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -54,6 +97,11 @@ public class statistics extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/minimize.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,7 +176,7 @@ public class statistics extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Customer Name", "Book Name", "Author", "Mobile", "Date of Issue", "Date of Return", "Late Fee", "Fine Status"
+                "Customer Name", "Mobile", "Book Name", "Author", "Date of Issue", "Date of Return", "Late Fee", "Fine Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -195,6 +243,10 @@ public class statistics extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         this.setVisible(false);
         this.dispose();
+    }                                        
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.setExtendedState(statistics.ICONIFIED);
     }                                        
 
     /**

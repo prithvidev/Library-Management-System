@@ -299,7 +299,7 @@ public class issuebook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton25jButton1ActionPerformed
 
     private void jButton26jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26jButton2ActionPerformed
-        this.setExtendedState(dashboard.ICONIFIED);
+        this.setExtendedState(issuebook.ICONIFIED);
     }//GEN-LAST:event_jButton26jButton2ActionPerformed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged

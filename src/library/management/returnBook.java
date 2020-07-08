@@ -5,6 +5,16 @@
  */
 package library.management;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +29,7 @@ public class returnBook extends javax.swing.JFrame {
     int xmouse, ymouse;
     public returnBook() {
         initComponents();
-        JOptionPane.showMessageDialog(this,"Enter Customer ID and Book ID to find details","Return Book",JOptionPane.INFORMATION_MESSAGE);
+        
     }
 
     /**
@@ -37,6 +47,7 @@ public class returnBook extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         cid = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -53,7 +64,9 @@ public class returnBook extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         auth = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        issueDate1 = new javax.swing.JTextField();
+        returnDate = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        lfee = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -95,6 +108,17 @@ public class returnBook extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 28, 24));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 30, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -183,15 +207,32 @@ public class returnBook extends javax.swing.JFrame {
         jLabel5.setText("Date of Return");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        issueDate1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        issueDate1.addFocusListener(new java.awt.event.FocusAdapter() {
+        returnDate.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        returnDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                issueDate1FocusGained(evt);
+                returnDateFocusGained(evt);
             }
         });
-        issueDate1.addMouseListener(new java.awt.event.MouseAdapter() {
+        returnDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                issueDate1MouseClicked(evt);
+                returnDateMouseClicked(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Late Fee");
+        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lfee.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lfee.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lfeeFocusGained(evt);
+            }
+        });
+        lfee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lfeeMouseClicked(evt);
             }
         });
 
@@ -199,6 +240,9 @@ public class returnBook extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,15 +276,16 @@ public class returnBook extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
-                        .addComponent(issueDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(returnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
-                        .addComponent(issueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(issueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(lfee, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,8 +323,12 @@ public class returnBook extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(issueDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 58, Short.MAX_VALUE))
+                    .addComponent(returnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lfee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -333,7 +382,37 @@ public class returnBook extends javax.swing.JFrame {
         if(cust_id.isEmpty() || book_id.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please Fill CustomerID and BookID in the particular boxes");
         }
-        
+        else{
+            try{
+                Connection con;
+                myconnection reg = new myconnection();
+                con = reg.getRegisterConnection();
+                String sql = "select * from issuebook where Bookid = '"+book_id+"'&& customerid = '"+cust_id+"'";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    cn.setText(rs.getString(6));
+                    mob.setText(rs.getString(7));
+                    bname.setText(rs.getString(2));
+                    auth.setText(rs.getString(3));
+                    issueDate.setText(rs.getString(4));
+                    returnDate.setText(rs.getString(8));
+                    String r = rs.getString(8);
+                    Date returnD = new SimpleDateFormat("yyyy-MM-dd").parse(r);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    Date today = sdf.parse(sdf.format(new Date()));
+                    if(today.after(returnD)){
+                        long daysbetween = returnD.getTime() - today.getTime();
+                        long d = TimeUnit.DAYS.convert(daysbetween , TimeUnit.MILLISECONDS);
+                        long fine = d * 5;
+                        lfee.setText(fine+"");
+                    }
+                    else{lfee.setText(0+"");}
+                }
+            }catch(SQLException ex){System.out.println("ERROR"+ex);} catch (ParseException ex) {
+                Logger.getLogger(returnBook.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void issueDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_issueDateFocusGained
@@ -356,13 +435,27 @@ public class returnBook extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_authActionPerformed
 
-    private void issueDate1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_issueDate1FocusGained
+    private void returnDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_returnDateFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_issueDate1FocusGained
+    }//GEN-LAST:event_returnDateFocusGained
 
-    private void issueDate1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_issueDate1MouseClicked
+    private void returnDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnDateMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_issueDate1MouseClicked
+    }//GEN-LAST:event_returnDateMouseClicked
+
+    private void lfeeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lfeeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lfeeFocusGained
+
+    private void lfeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lfeeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lfeeMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        dashboard h = new dashboard();
+        this.dispose();
+        h.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,10 +499,10 @@ public class returnBook extends javax.swing.JFrame {
     private javax.swing.JTextField cid;
     private javax.swing.JTextField cn;
     private javax.swing.JTextField issueDate;
-    private javax.swing.JTextField issueDate1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
@@ -418,10 +511,13 @@ public class returnBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField lfee;
     private javax.swing.JTextField mob;
+    private javax.swing.JTextField returnDate;
     // End of variables declaration//GEN-END:variables
 }

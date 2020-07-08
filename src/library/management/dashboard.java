@@ -295,6 +295,7 @@ public final class dashboard extends javax.swing.JFrame {
     private void jButton31jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31jButton7ActionPerformed
         this.dispose();
         returnBook rb = new returnBook();
+        JOptionPane.showMessageDialog(this,"Enter Customer ID and Book ID to find details","Return Book",JOptionPane.INFORMATION_MESSAGE);
         rb.setVisible(true);
     }//GEN-LAST:event_jButton31jButton7ActionPerformed
 

@@ -33,7 +33,6 @@ public final class dashboard extends javax.swing.JFrame {
      dashboard(String u) {
         initComponents();
         u1 = u;
-        
     }
      
      

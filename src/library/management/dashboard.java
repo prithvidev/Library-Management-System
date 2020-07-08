@@ -110,6 +110,11 @@ public final class dashboard extends javax.swing.JFrame {
         jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/graph.png"))); // NOI18N
         jButton28.setContentAreaFilled(false);
         jButton28.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 194, 92, 80));
 
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/about.png"))); // NOI18N
@@ -360,6 +365,12 @@ public final class dashboard extends javax.swing.JFrame {
         issuebook ib = new issuebook();
         ib.setVisible(true);
     }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        this.dispose();
+        statistics st = new statistics();
+        st.setVisible(true);
+    }//GEN-LAST:event_jButton28ActionPerformed
 
     /**
      * @param args the command line arguments

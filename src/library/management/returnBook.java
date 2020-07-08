@@ -5,6 +5,8 @@
  */
 package library.management;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PrithviDevKumar
@@ -17,6 +19,7 @@ public class returnBook extends javax.swing.JFrame {
     int xmouse, ymouse;
     public returnBook() {
         initComponents();
+        JOptionPane.showMessageDialog(this,"Enter Customer ID and Book ID to find details","Return Book",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -325,6 +328,11 @@ public class returnBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String cust_id = cid.getText();
+        String book_id = bid.getText();
+        if(cust_id.isEmpty() || book_id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please Fill CustomerID and BookID in the particular boxes");
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

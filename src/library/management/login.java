@@ -217,7 +217,8 @@ public class login extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String user = us.getText();
         String pass = p.getText();
-        if(user.isEmpty() || pass.isEmpty()){JOptionPane.showMessageDialog(this, "Enter all Details");}
+        if(user.isEmpty() || pass.isEmpty())
+        {JOptionPane.showMessageDialog(this, "Enter all Details");}
         else{
         try{
            Connection con;

@@ -51,7 +51,6 @@ public class issuebook extends javax.swing.JFrame {
         bname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         auth = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         bid = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -62,12 +61,12 @@ public class issuebook extends javax.swing.JFrame {
         cn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         mob = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         cid = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         returnDate = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -114,6 +113,8 @@ public class issuebook extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 30));
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "BOOK SECTION", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel3.setForeground(new java.awt.Color(0, 0, 204));
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -151,12 +152,6 @@ public class issuebook extends javax.swing.JFrame {
         });
         jPanel3.add(auth, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, 30));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Book Section");
-        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 290, 30));
-
         bid.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jPanel3.add(bid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 130, 30));
 
@@ -190,8 +185,9 @@ public class issuebook extends javax.swing.JFrame {
         });
         jPanel3.add(datechooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 160, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 36, 290, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 36, 290, 210));
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "CUSTOMER SECTION", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 0, 255))); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -224,12 +220,6 @@ public class issuebook extends javax.swing.JFrame {
         mob.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jPanel4.add(mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 160, 30));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Customer Section");
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 30));
-
         cid.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jPanel4.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 140, 30));
 
@@ -261,7 +251,7 @@ public class issuebook extends javax.swing.JFrame {
         });
         jPanel4.add(returnDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 160, 30));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 292, 200));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 292, 220));
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton1.setText("ISSUE BOOK");
@@ -271,7 +261,10 @@ public class issuebook extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 129, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 477, 120, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,7 +277,7 @@ public class issuebook extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(292, 539));
+        setSize(new java.awt.Dimension(292, 510));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -480,7 +473,6 @@ public class issuebook extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;

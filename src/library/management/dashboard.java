@@ -286,6 +286,7 @@ public final class dashboard extends javax.swing.JFrame {
 
     private void jButton25jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25jButton1ActionPerformed
         this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton25jButton1ActionPerformed
 
     private void jButton26jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26jButton2ActionPerformed

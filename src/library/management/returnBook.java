@@ -5,6 +5,7 @@
  */
 package library.management;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +30,58 @@ public class returnBook extends javax.swing.JFrame {
     int xmouse, ymouse;
     public returnBook() {
         initComponents();
+        
+    }
+    private void add(){
+        String cust_id = cid.getText();
+        String b_id = bid.getText();
+        String cust_name = cn.getText();
+        String phone = mob.getText();
+        String book_name = bname.getText();
+        String author = auth.getText();
+        String doi = issueDate.getText();
+        String dor = returnDate.getText();
+        String l = lfee.getText();
+        String pp = finestatus.getSelectedItem().toString();
+        try{
+                Connection con;
+                myconnection reg = new myconnection();
+                con= reg.getRegisterConnection();
+                String sql = "insert into retunbook(customerid,bookid,customername,mobile,bookname,author,dateofissue,dateofreturn,latefee,finestatus)values(?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement ps = con.prepareStatement(sql);
+                
+                ps.setString(1, cust_id);
+                ps.setString(2, b_id);
+                ps.setString(3, cust_name);
+                ps.setString(4, phone);
+                ps.setString(5, book_name);
+                ps.setString(6, author);
+                ps.setString(7, doi);
+                ps.setString(8, dor);
+                ps.setString(9, l);
+                ps.setString(10, pp);
+                
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Book Returned");
+                con.close();
+        }
+        catch(HeadlessException | SQLException e){}
+    }
+    
+    private void delete(){
+        String cust_id = cid.getText();
+        String book_id = bid.getText();
+        try {
+            Connection con;
+            myconnection reg = new myconnection();
+            con= reg.getRegisterConnection();
+            String sql = "delete from issuebook where customerid ='"+cust_id+"'&& bookid ='"+book_id+"'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            System.out.println("ISSUED BOOK RETURNED");
+        } catch (SQLException ex) {
+            Logger.getLogger(returnBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
@@ -397,6 +450,7 @@ public class returnBook extends javax.swing.JFrame {
 
     private void jButton25jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25jButton1ActionPerformed
         this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton25jButton1ActionPerformed
 
     private void jButton26jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26jButton2ActionPerformed
@@ -447,6 +501,7 @@ public class returnBook extends javax.swing.JFrame {
                     }
                     else{lfee.setText(0+"");}
                 }
+                else{JOptionPane.showMessageDialog(this,"No Record Found","Return Book",JOptionPane.INFORMATION_MESSAGE);}
             }catch(SQLException ex){System.out.println("ERROR"+ex);} catch (ParseException ex) {
                 Logger.getLogger(returnBook.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -508,10 +563,12 @@ public class returnBook extends javax.swing.JFrame {
         String status = finestatus.getSelectedItem().toString();
         
         if(cust_id.isEmpty() || b_id.isEmpty() || cust_name.isEmpty() || phone.isEmpty() || book_name.isEmpty() || author.isEmpty() || doi.isEmpty() || dor.isEmpty() || l.isEmpty() || status.equals("-1")){
-            JOptionPane.showMessageDialog(this, "");
+            JOptionPane.showMessageDialog(this, "Fill all the Boxes");
         }
         else{
-            
+            add();
+            delete();
+            JOptionPane.showMessageDialog(this,"BOOK RETURNED!!","Return Book",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

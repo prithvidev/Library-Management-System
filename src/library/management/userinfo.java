@@ -23,11 +23,12 @@ public class userinfo extends javax.swing.JFrame {
      */
     String userid;
     int xmouse , ymouse;
+    String display1;
     public userinfo() {
         initComponents();
     }
 
-    userinfo(String u1) {
+    userinfo(String u1, String display) {
         initComponents();
         userid = u1;
         profilepic();
@@ -282,7 +283,7 @@ public class userinfo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        dashboard h = new dashboard(userid);
+        dashboard h = new dashboard(userid, display1);
         this.dispose();
         h.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed

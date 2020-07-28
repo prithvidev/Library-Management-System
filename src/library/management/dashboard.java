@@ -5,14 +5,6 @@
  */
 package library.management;
 
-import java.awt.Image;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,13 +18,17 @@ public final class dashboard extends javax.swing.JFrame {
      */
     int xmouse , ymouse;
     String u1;
+    String display;
     public dashboard() {
         initComponents();
     }
     
-     dashboard(String u) {
+     dashboard(String u, String d) {
         initComponents();
         u1 = u;
+        display = d;
+        userkaname.setText(display);
+        
     }
      
      
@@ -67,6 +63,7 @@ public final class dashboard extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         addnew = new javax.swing.JButton();
         dd = new javax.swing.JLabel();
+        userkaname = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
@@ -225,6 +222,12 @@ public final class dashboard extends javax.swing.JFrame {
         dd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel6.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 120, 20));
 
+        userkaname.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        userkaname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        userkaname.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userkaname.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel6.add(userkaname, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 120, 20));
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -305,7 +308,7 @@ public final class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31jButton7ActionPerformed
 
     private void jButton32jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32jButton8ActionPerformed
-        userinfo uu = new userinfo(u1);
+        userinfo uu = new userinfo(u1, display);
         this.dispose();
         uu.setVisible(true);
     }//GEN-LAST:event_jButton32jButton8ActionPerformed
@@ -387,22 +390,16 @@ public final class dashboard extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new dashboard().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new dashboard().setVisible(true);
         });
     }
 
@@ -430,5 +427,6 @@ public final class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton logout;
+    private javax.swing.JLabel userkaname;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,15 +18,16 @@ public class loading extends javax.swing.JFrame {
      * Creates new form loading
      */
     String u;
+    String d;
     public loading() {
         initComponents();
     }
 
-    loading(String user) {
+    loading(String user, String display) {
         initComponents();
         
         u = user;
-        
+        d = display;
         Thread t = new Thread(){
         public void run(){
             int min = 0;
@@ -43,13 +44,15 @@ public class loading extends javax.swing.JFrame {
             int qq = q.getMaximum();
             if(qq == 100){
                 setVisible(false);
-            dashboard  nw = new dashboard(u);
+            dashboard  nw = new dashboard(u, d);
             nw.setVisible(true);
         }
         }
     };
         t.start();
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.

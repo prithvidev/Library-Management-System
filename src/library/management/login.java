@@ -228,7 +228,10 @@ public class login extends javax.swing.JFrame {
            PreparedStatement ps = con.prepareStatement(sql);
            ResultSet rs = ps.executeQuery(sql);
            if(rs.next()){  
-               loading n = new loading(user);
+               String fn = rs.getString("first_name");
+               String ln = rs.getString("last_name");
+               String display = "Hello!".concat(" ").concat(fn).concat(" ").concat(ln);
+               loading n = new loading(user, display);
                 n.setVisible(true);
                 this.dispose();
            }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package library.management;
+package Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import library.management.myconnection;
 
 /**
  *
@@ -19,6 +20,9 @@ import javax.swing.JOptionPane;
  */
 public class forgot_password extends javax.swing.JFrame {
 
+    /**
+     * Creates new form forgot_password
+     */
     int xmouse, ymouse;
     public forgot_password() {
         initComponents();
@@ -33,22 +37,71 @@ public class forgot_password extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        t1 = new javax.swing.JTextField();
+        t = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        t = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        t1 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/qaz.png"))); // NOI18N
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 230, 122));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 30, 30));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setText("MOBILE NUMBER");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 24));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("EMAIL");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 110, 24));
+
+        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton3.setText("Submit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 83, -1));
+
+        t1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        t1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                t1KeyPressed(evt);
+            }
+        });
+        getContentPane().add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 146, 24));
+
+        t.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        t.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tKeyPressed(evt);
+            }
+        });
+        getContentPane().add(t, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 146, 24));
 
         jPanel2.setOpaque(false);
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -89,63 +142,46 @@ public class forgot_password extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 385, 30));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/qaz.png"))); // NOI18N
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 230, 122));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel3.setText("MOBILE NUMBER");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 24));
-
-        t.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        t.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tKeyPressed(evt);
-            }
-        });
-        getContentPane().add(t, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 146, 24));
-
-        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButton3.setText("Submit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 83, -1));
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("USERNAME");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 110, 24));
-
-        t1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        t1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                t1KeyPressed(evt);
-            }
-        });
-        getContentPane().add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 146, 24));
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 30, 30));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 290));
-
-        setSize(new java.awt.Dimension(381, 288));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.dispose();
+        Cust_login h = new Cust_login();
+        h.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String mob = t.getText();
+        String email = t1.getText();
+        try {
+            Connection con1;
+            myconnection registercon1 = new myconnection();
+            con1 = registercon1.getRegisterConnection();
+            String sql2 = "select * from customer where email='"+email+"'&& mobile='"+mob+"'";
+            PreparedStatement p = con1.prepareStatement(sql2);
+            ResultSet rs = p.executeQuery();
+            if(rs.next()){
+                String pass = rs.getString("password");
+                JOptionPane.showMessageDialog(this,pass,"Forgot Password",JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{JOptionPane.showMessageDialog(this, "RECORD NOT FOUND", "Forgot Password",JOptionPane.INFORMATION_MESSAGE);}
+            con1.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(forgot_password.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void t1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_t1KeyPressed
+
+    private void tKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tKeyPressed
+        /**String p = t.getText();
+        char c = evt.getKeyChar();
+
+        if(Character.isDigit(c))**/
+    }//GEN-LAST:event_tKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
@@ -166,45 +202,6 @@ public class forgot_password extends javax.swing.JFrame {
         xmouse = evt.getX();
         ymouse = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
-
-    private void tKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tKeyPressed
-        /**String p = t.getText();
-        char c = evt.getKeyChar();
-
-        if(Character.isDigit(c))**/
-    }//GEN-LAST:event_tKeyPressed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String mob = t.getText();
-        String username = t1.getText();
-        try {
-            Connection con1;
-            myconnection registercon1 = new myconnection();
-            con1 = registercon1.getRegisterConnection();
-            String sql2 = "select * from record where username='"+username+"'&& phno='"+mob+"'";
-            PreparedStatement p = con1.prepareStatement(sql2);
-            ResultSet rs = p.executeQuery();
-            if(rs.next()){
-                String pass = rs.getString("password");
-                JOptionPane.showMessageDialog(this,pass,"Forgot Password",JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{JOptionPane.showMessageDialog(this, "RECORD NOT FOUND", "Forgot Password",JOptionPane.INFORMATION_MESSAGE);}
-            con1.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(forgot_password.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void t1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_t1KeyPressed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.dispose();
-        login h = new login();
-        h.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,7 +241,6 @@ public class forgot_password extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField t;
     private javax.swing.JTextField t1;

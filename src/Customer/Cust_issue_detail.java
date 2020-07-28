@@ -5,12 +5,18 @@
  */
 package Customer;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 import library.management.myconnection;
 import net.proteanit.sql.DbUtils;
 
@@ -25,22 +31,37 @@ public class Cust_issue_detail extends javax.swing.JFrame {
      */
     int xmouse, ymouse;
     String user;
+    String Cname;
     public Cust_issue_detail() {
         initComponents();
     }
-    public Cust_issue_detail(String Cust_id){
+    public Cust_issue_detail(String Cust_id, String n){
         initComponents();
+        
         a1.setVisible(false);
         user = Cust_id;
+        Cname = n;
         tableDisplay();
         name();
+        
+        CustomCellRenderer cd1 = new CustomCellRenderer(Color.BLACK ,Color.WHITE ,new Font("Times New Roman",Font.BOLD, 18),BorderFactory.createLineBorder(Color.BLACK),true);
+        JTableHeader header = tab.getTableHeader();
+        header.setDefaultRenderer(cd1);
+        
+        TableCellRenderer rendererFromHeader = tab.getTableHeader().getDefaultRenderer();
+        JLabel headerLabel = (JLabel) rendererFromHeader;
+        headerLabel.setHorizontalAlignment(JLabel.CENTER);
+        
+        tab.setRowHeight(25);
+        tab.setShowHorizontalLines(true);
+        tab.setShowVerticalLines(true);
     }
     public final void tableDisplay(){
         try {
             Connection con;
             myconnection registercon = new myconnection();
             con = registercon.getRegisterConnection();
-            String displayquery = "select book_id,book_name,author from book where book_id = 'LIB-0001'";
+            String displayquery = "select Bookid,bookname,author,dateofissue,dateofreturn from issuebook where customername ='"+Cname +"'";
             PreparedStatement p = con.prepareStatement(displayquery);
             ResultSet rs = p.executeQuery();
             tab.setModel(DbUtils.resultSetToTableModel(rs));
@@ -79,12 +100,12 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tab = new javax.swing.JTable();
         a1 = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tab = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
@@ -121,7 +142,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 28, 24));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 28, 24));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/minimize.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -130,50 +151,18 @@ public class Cust_issue_detail extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 28, 24));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 28, 24));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 431, 30));
-
-        tab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tab.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        tab.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "book_id", "author", "book_name"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tab.setOpaque(false);
-        tab.getTableHeader().setResizingAllowed(false);
-        tab.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tab);
-        if (tab.getColumnModel().getColumnCount() > 0) {
-            tab.getColumnModel().getColumn(0).setResizable(false);
-            tab.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 411, 289));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 30));
 
         a1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         a1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         a1.setText("Print ID Card");
-        jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 80, 20));
+        jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 80, 20));
 
         name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 220, 30));
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 220, 30));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -203,10 +192,25 @@ public class Cust_issue_detail extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 30, 30));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 30, 30));
+
+        tab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Book ID", "Book Name", "Author", "Date Of Issue", "Date Of Return"
+            }
+        ));
+        jScrollPane1.setViewportView(tab);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 710, 290));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 410));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,7 +223,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(431, 409));
+        setSize(new java.awt.Dimension(729, 410));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -203,7 +203,9 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void qActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qActionPerformed
-        
+    this.dispose();
+    forgot_password fp = new forgot_password();
+    fp.setVisible(true);
     }//GEN-LAST:event_qActionPerformed
 
     private void qMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qMouseEntered

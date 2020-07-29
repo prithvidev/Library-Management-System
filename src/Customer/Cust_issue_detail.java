@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import library.management.myconnection;
@@ -41,6 +42,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         a1.setVisible(false);
         user = Cust_id;
         Cname = n;
+        JOptionPane.showMessageDialog(this, "Keep an eye on the return date, to get safe from Fine!!");
         tableDisplay();
         name();
         
@@ -104,6 +106,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         name = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tab = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -158,7 +161,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         a1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         a1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         a1.setText("Print ID Card");
-        jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 80, 20));
+        jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 80, 20));
 
         name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -193,6 +196,25 @@ public class Cust_issue_detail extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 30, 30));
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Customer/update.png"))); // NOI18N
+        jButton7.setBorder(null);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 30, 30));
 
         tab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,11 +283,25 @@ public class Cust_issue_detail extends javax.swing.JFrame {
 
     private void jButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseEntered
         a1.setVisible(true);
+        a1.setText("Print ID Card");
     }//GEN-LAST:event_jButton6MouseEntered
 
     private void jButton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseExited
         a1.setVisible(false);
     }//GEN-LAST:event_jButton6MouseExited
+
+    private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
+        a1.setVisible(true);
+        a1.setText("Update Record");
+    }//GEN-LAST:event_jButton7MouseEntered
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+       a1.setVisible(false);
+    }//GEN-LAST:event_jButton7MouseExited
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +339,7 @@ public class Cust_issue_detail extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -300,7 +300,9 @@ public class Cust_issue_detail extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7MouseExited
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        updateDetails ud = new updateDetails(user);
+        ud.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

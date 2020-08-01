@@ -51,6 +51,7 @@ public class updateDetails extends javax.swing.JFrame {
     updateDetails(String user){
         initComponents();
         userid = user;
+        labeldisplay();
     }
      public final void labeldisplay(){
         try{
@@ -67,7 +68,12 @@ public class updateDetails extends javax.swing.JFrame {
                 mob.setText(rs.getString("Mobile"));
                 em.setText(rs.getString("email"));
                 p.setText(rs.getString("password"));
-                
+                doj.setText(rs.getString("DateOfJoin"));
+                add.setText(rs.getString("address"));
+                pc.setText(rs.getString("Pincode"));
+                 byte[] img = rs.getBytes("profilepic");
+        ImageIcon iu = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(profile.getWidth(), profile.getHeight(), Image.SCALE_SMOOTH));
+        profile.setIcon(iu);
             }
         }catch(SQLException ex){ }
     }
@@ -104,12 +110,12 @@ public class updateDetails extends javax.swing.JFrame {
         add = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         pc = new javax.swing.JTextField();
-        q = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         error = new javax.swing.JLabel();
         dob = new javax.swing.JTextField();
-        dob1 = new javax.swing.JTextField();
+        doj = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -254,10 +260,10 @@ public class updateDetails extends javax.swing.JFrame {
         });
         getContentPane().add(pc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 170, 30));
 
-        q.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        q.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        q.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(q, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 132, 150));
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        profile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 132, 150));
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton3.setText("UPLOAD");
@@ -294,13 +300,13 @@ public class updateDetails extends javax.swing.JFrame {
         });
         getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 170, 30));
 
-        dob1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        dob1.addActionListener(new java.awt.event.ActionListener() {
+        doj.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        doj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dob1ActionPerformed(evt);
+                dojActionPerformed(evt);
             }
         });
-        getContentPane().add(dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 30));
+        getContentPane().add(doj, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -372,8 +378,8 @@ public class updateDetails extends javax.swing.JFrame {
             filename = f.getAbsolutePath();
         }
         else{JOptionPane.showMessageDialog(this, "Please Select Image");}
-        ImageIcon imageicon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(q.getWidth(), q.getHeight(), Image.SCALE_SMOOTH));
-        q.setIcon(imageicon);
+        ImageIcon imageicon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(profile.getWidth(), profile.getHeight(), Image.SCALE_SMOOTH));
+        profile.setIcon(imageicon);
 
         try{
             File image = new File(filename);
@@ -417,9 +423,9 @@ public class updateDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dobActionPerformed
 
-    private void dob1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dob1ActionPerformed
+    private void dojActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dojActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dob1ActionPerformed
+    }//GEN-LAST:event_dojActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,7 +461,7 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JTextField cid;
     private javax.swing.JTextField cn;
     private javax.swing.JTextField dob;
-    private javax.swing.JTextField dob1;
+    private javax.swing.JTextField doj;
     private javax.swing.JTextField em;
     private javax.swing.JLabel error;
     private javax.swing.JButton jButton1;
@@ -478,6 +484,6 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JTextField mob;
     private javax.swing.JPasswordField p;
     private javax.swing.JTextField pc;
-    private javax.swing.JLabel q;
+    private javax.swing.JLabel profile;
     // End of variables declaration//GEN-END:variables
 }

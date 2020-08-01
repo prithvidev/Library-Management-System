@@ -48,14 +48,30 @@ public class updateDetails extends javax.swing.JFrame {
         initComponents();
     }
 
-    updateDetails(String user) {
+    updateDetails(String user){
         initComponents();
         userid = user;
-        Connection con;
-        myconnection register = new myconnection();
-        con = register.getRegisterConnection();
-        
     }
+     public final void labeldisplay(){
+        try{
+            Connection con;
+            myconnection reg = new myconnection();
+            con = reg.getRegisterConnection();
+            String sql1 = "Select * from Customer where CustomerID='"+userid+"'";
+            PreparedStatement ps = con.prepareStatement(sql1);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                cid.setText(rs.getString("CustomerID"));
+                cn.setText(rs.getString("Customername"));
+                dob.setText(rs.getString("DateOfBirth"));
+                mob.setText(rs.getString("Mobile"));
+                em.setText(rs.getString("email"));
+                p.setText(rs.getString("password"));
+                
+            }
+        }catch(SQLException ex){ }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +82,7 @@ public class updateDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -76,7 +93,6 @@ public class updateDetails extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cn = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        dob = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         mob = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -84,7 +100,6 @@ public class updateDetails extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         p = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
-        doj = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         add = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -93,6 +108,10 @@ public class updateDetails extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         error = new javax.swing.JLabel();
+        dob = new javax.swing.JTextField();
+        dob1 = new javax.swing.JTextField();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -175,7 +194,6 @@ public class updateDetails extends javax.swing.JFrame {
         jLabel3.setText("Date Of Birth");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 102, 30));
-        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 170, 30));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -212,7 +230,6 @@ public class updateDetails extends javax.swing.JFrame {
         jLabel8.setText("Date Of Joining");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 102, 30));
-        getContentPane().add(doj, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 30));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -268,6 +285,22 @@ public class updateDetails extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 121, 42));
         getContentPane().add(error, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 36, 31));
+
+        dob.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        dob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 170, 30));
+
+        dob1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        dob1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dob1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -380,6 +413,14 @@ public class updateDetails extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void dobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dobActionPerformed
+
+    private void dob1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dob1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dob1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -411,10 +452,10 @@ public class updateDetails extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField add;
-    public static javax.swing.JTextField cid;
+    private javax.swing.JTextField cid;
     private javax.swing.JTextField cn;
-    private com.toedter.calendar.JDateChooser dob;
-    private com.toedter.calendar.JDateChooser doj;
+    private javax.swing.JTextField dob;
+    private javax.swing.JTextField dob1;
     private javax.swing.JTextField em;
     private javax.swing.JLabel error;
     private javax.swing.JButton jButton1;
@@ -433,6 +474,7 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField mob;
     private javax.swing.JPasswordField p;
     private javax.swing.JTextField pc;

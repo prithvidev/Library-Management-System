@@ -235,8 +235,8 @@ public class IDcard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.dispose();
-        Cust_issue_detail h = new Cust_issue_detail();
+        this.setVisible(false);
+        Cust_issue_detail h = new Cust_issue_detail(cust);
         h.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -58,12 +58,33 @@ public class Cust_issue_detail extends javax.swing.JFrame {
         tab.setShowHorizontalLines(true);
         tab.setShowVerticalLines(true);
     }
+
+    Cust_issue_detail(String cust) {
+        initComponents();
+        user = cust;
+        a1.setVisible(false);
+        JOptionPane.showMessageDialog(this, "Keep an eye on the return date, to get safe from Fine!!");
+        tableDisplay();
+        name();
+        
+        CustomCellRenderer cd1 = new CustomCellRenderer(Color.BLACK ,Color.WHITE ,new Font("Times New Roman",Font.BOLD, 18),BorderFactory.createLineBorder(Color.BLACK),true);
+        JTableHeader header = tab.getTableHeader();
+        header.setDefaultRenderer(cd1);
+        
+        TableCellRenderer rendererFromHeader = tab.getTableHeader().getDefaultRenderer();
+        JLabel headerLabel = (JLabel) rendererFromHeader;
+        headerLabel.setHorizontalAlignment(JLabel.CENTER);
+        
+        tab.setRowHeight(25);
+        tab.setShowHorizontalLines(true);
+        tab.setShowVerticalLines(true);
+    }
     public final void tableDisplay(){
         try {
             Connection con;
             myconnection registercon = new myconnection();
             con = registercon.getRegisterConnection();
-            String displayquery = "select Bookid,bookname,author,dateofissue,dateofreturn from issuebook where customername ='"+Cname +"'";
+            String displayquery = "select Bookid,bookname,author,dateofissue,dateofreturn from issuebook where customerid ='"+user +"'";
             PreparedStatement p = con.prepareStatement(displayquery);
             ResultSet rs = p.executeQuery();
             tab.setModel(DbUtils.resultSetToTableModel(rs));
@@ -251,7 +272,6 @@ public class Cust_issue_detail extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

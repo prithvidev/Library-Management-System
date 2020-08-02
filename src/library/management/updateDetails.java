@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Customer;
+package library.management;
 
+import Customer.Cust_login;
 import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,8 +14,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -25,8 +24,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import static library.management.addnewcustomer.cid;
-import library.management.myconnection;
 
 /**
  *
@@ -37,46 +34,12 @@ public class updateDetails extends javax.swing.JFrame {
     /**
      * Creates new form updateDetails
      */
-    String filename;
-     byte[] p_image = null;
-    String w;
     int xmouse, ymouse;
-    String wq;
-    String userid;
+    String filename;
+    byte[] p_image = null;
     public updateDetails() {
         initComponents();
     }
-
-    updateDetails(String user){
-        initComponents();
-        userid = user;
-        labeldisplay();
-    }
-     public final void labeldisplay(){
-        try{
-            Connection con;
-            myconnection reg = new myconnection();
-            con = reg.getRegisterConnection();
-            String sql1 = "Select * from Customer where CustomerID='"+userid+"'";
-            PreparedStatement ps = con.prepareStatement(sql1);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                cid.setText(rs.getString("CustomerID"));
-                cn.setText(rs.getString("Customername"));
-                dob.setDate(rs.getDate("DateOfBirth"));
-                mob.setText(rs.getString("Mobile"));
-                em.setText(rs.getString("email"));
-                p.setText(rs.getString("password"));
-                doj.setText(rs.getString("DateOfJoin"));
-                add.setText(rs.getString("address"));
-                pc.setText(rs.getString("Pincode"));
-                 byte[] img = rs.getBytes("profilepic");
-        ImageIcon iu = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(132, 150 , Image.SCALE_SMOOTH));
-        profile.setIcon(iu);
-            }
-        }catch(SQLException ex){ }
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,7 +50,6 @@ public class updateDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -113,14 +75,10 @@ public class updateDetails extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         error = new javax.swing.JLabel();
-        dob = new com.toedter.calendar.JDateChooser();
+        dob = new javax.swing.JTextField();
         doj = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-
-        jLabel12.setText("jLabel12");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setOpaque(false);
@@ -149,7 +107,7 @@ public class updateDetails extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 28, 24));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 28, 24));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/minimize.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -158,7 +116,7 @@ public class updateDetails extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 28, 24));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 28, 24));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 30));
 
@@ -175,17 +133,16 @@ public class updateDetails extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Customer ID");
+        jLabel7.setText("User ID");
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 102, 30));
 
-        cid.setEditable(false);
         cid.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         getContentPane().add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, 30));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Customer Name");
+        jLabel2.setText("First Name");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 102, 30));
 
@@ -201,22 +158,22 @@ public class updateDetails extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Date Of Birth");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 102, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 102, 30));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Mobile");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 102, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 102, 30));
 
         mob.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        getContentPane().add(mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, 30));
+        getContentPane().add(mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Email");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 102, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 102, 30));
 
         em.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         em.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -224,20 +181,20 @@ public class updateDetails extends javax.swing.JFrame {
                 emFocusLost(evt);
             }
         });
-        getContentPane().add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 30));
+        getContentPane().add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 170, 30));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Password");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 102, 30));
-        getContentPane().add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 170, 31));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 102, 30));
+        getContentPane().add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 31));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Date Of Joining");
+        jLabel8.setText("Last Name");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 102, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 102, 30));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -270,7 +227,6 @@ public class updateDetails extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton3.setText("UPLOAD");
         jButton3.setContentAreaFilled(false);
-        jButton3.setOpaque(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton3MouseEntered(evt);
@@ -291,7 +247,6 @@ public class updateDetails extends javax.swing.JFrame {
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -299,25 +254,33 @@ public class updateDetails extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 121, 42));
         getContentPane().add(error, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 36, 31));
-        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 170, 30));
 
-        doj.setEditable(false);
-        doj.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        getContentPane().add(doj, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 30));
+        dob.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        dob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, 30));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 550));
+        doj.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        doj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dojActionPerformed(evt);
+            }
+        });
+        getContentPane().add(doj, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 170, 30));
 
-        setSize(new java.awt.Dimension(520, 550));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setExtendedState(Cust_issue_detail.ICONIFIED);
+        this.setExtendedState(updateDetails.ICONIFIED);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
@@ -333,7 +296,7 @@ public class updateDetails extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
-        Cust_issue_detail h = new Cust_issue_detail(userid);
+        Cust_login h = new Cust_login();
         h.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -397,56 +360,32 @@ public class updateDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-       
-        String Cust_name = cn.getText();
-        String birth = sdf.format(dob.getDate());
-        String phone = mob.getText();
-        String email = em.getText();
-        String pass = p.getText();
-        String address = add.getText();
-        String pincode = pc.getText();
-        String join = doj.getText();
-        
-        if(Cust_name.isEmpty() || birth.isEmpty() || phone.isEmpty() || email.isEmpty() || pass.isEmpty() || address.isEmpty() || pincode.isEmpty()){
-            JOptionPane.showMessageDialog(this,"Check All the Boxes");
-        }
-        else{
-            try{
-                Connection con;
-                myconnection reg = new myconnection();
-                con = reg.getRegisterConnection();
-                String sql1 = "update Customer set CustomerID =?,Customername=?,DateOfBirth=?,Mobile=?,email=?,password=?,DateOfJoin=?,Address=?,Pincode=?,profilepic=? where CustomerID='"+userid+"'";
-                PreparedStatement ps1 = con.prepareStatement(sql1);
-                ps1.setString(1, userid);
-                ps1.setString(2, cn.getText());
-                ps1.setString(3, sdf.format(dob.getDate()));
-                ps1.setString(4, mob.getText());
-                ps1.setString(5, em.getText());
-                ps1.setString(6, p.getText());
-                ps1.setString(7, doj.getText());
-                ps1.setString(8, add.getText());
-                ps1.setString(9, pc.getText());
-                ps1.setBytes(10, p_image);
-                
-                ps1.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Details Updated!");
-                cn.setText("");
-                dob.setDate(date);
-                mob.setText("");
-                em.setText("");
-                p.setText("");
-                add.setText("");
-                pc.setText("");
-                }catch (SQLException ex) {
-            Logger.getLogger(updateDetails.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        }
-           
+        try{
+            Connection con;
+            myconnection reg = new myconnection();
+            con = reg.getRegisterConnection();
+            String sql = "select * from Customer where CustomerID = '"+wq+"'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                cid.setText(rs.getString("CustomerID"));
+                cn.setText(rs.getString("Customername"));
 
-        
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(updateDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void dobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dobActionPerformed
+
+    private void dojActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dojActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dojActionPerformed
 
     /**
      * @param args the command line arguments
@@ -464,16 +403,22 @@ public class updateDetails extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(updateDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(updateDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(updateDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(updateDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new updateDetails().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new updateDetails().setVisible(true);
+            }
         });
     }
 
@@ -481,7 +426,7 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JTextField add;
     public static javax.swing.JTextField cid;
     private javax.swing.JTextField cn;
-    private com.toedter.calendar.JDateChooser dob;
+    private javax.swing.JTextField dob;
     private javax.swing.JTextField doj;
     private javax.swing.JTextField em;
     private javax.swing.JLabel error;
@@ -492,8 +437,6 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

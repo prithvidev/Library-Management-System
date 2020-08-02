@@ -58,11 +58,11 @@ public final class dashboard extends javax.swing.JFrame {
         addnew = new javax.swing.JButton();
         dd = new javax.swing.JLabel();
         userkaname = new javax.swing.JLabel();
+        update = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -193,7 +193,7 @@ public final class dashboard extends javax.swing.JFrame {
                 logoutActionPerformed(evt);
             }
         });
-        jPanel6.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 30, 30));
+        jPanel6.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 30, 30));
 
         addnew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/addnew.png"))); // NOI18N
         addnew.setContentAreaFilled(false);
@@ -221,6 +221,23 @@ public final class dashboard extends javax.swing.JFrame {
         userkaname.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         userkaname.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jPanel6.add(userkaname, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 120, 20));
+
+        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Customer/update.png"))); // NOI18N
+        update.setContentAreaFilled(false);
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateMouseExited(evt);
+            }
+        });
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+        jPanel6.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 30, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
@@ -262,10 +279,6 @@ public final class dashboard extends javax.swing.JFrame {
 
         jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jLabel1.setRequestFocusEnabled(false);
-        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 490));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -277,7 +290,7 @@ public final class dashboard extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -368,6 +381,18 @@ public final class dashboard extends javax.swing.JFrame {
         st.setVisible(true);
     }//GEN-LAST:event_jButton28ActionPerformed
 
+    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateMouseEntered
+
+    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateMouseExited
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,7 +433,6 @@ public final class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel29;
@@ -421,6 +445,7 @@ public final class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton logout;
+    private javax.swing.JButton update;
     private javax.swing.JLabel userkaname;
     // End of variables declaration//GEN-END:variables
 }

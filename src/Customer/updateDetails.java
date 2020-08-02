@@ -72,7 +72,7 @@ public class updateDetails extends javax.swing.JFrame {
                 add.setText(rs.getString("address"));
                 pc.setText(rs.getString("Pincode"));
                  byte[] img = rs.getBytes("profilepic");
-        ImageIcon iu = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(profile.getWidth(), profile.getHeight(), Image.SCALE_SMOOTH));
+        ImageIcon iu = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(132, 150 , Image.SCALE_SMOOTH));
         profile.setIcon(iu);
             }
         }catch(SQLException ex){ }
@@ -88,7 +88,6 @@ public class updateDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -116,10 +115,10 @@ public class updateDetails extends javax.swing.JFrame {
         error = new javax.swing.JLabel();
         dob = new javax.swing.JTextField();
         doj = new javax.swing.JTextField();
-
-        jTextField1.setText("jTextField1");
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setOpaque(false);
@@ -267,6 +266,7 @@ public class updateDetails extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton3.setText("UPLOAD");
+        jButton3.setOpaque(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton3MouseEntered(evt);
@@ -280,10 +280,13 @@ public class updateDetails extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 85, 31));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 85, 31));
 
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton4.setText("UPDATE");
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -308,7 +311,11 @@ public class updateDetails extends javax.swing.JFrame {
         });
         getContentPane().add(doj, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, 30));
 
-        pack();
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 550));
+
+        setSize(new java.awt.Dimension(520, 550));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -458,7 +465,7 @@ public class updateDetails extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField add;
-    private javax.swing.JTextField cid;
+    public static javax.swing.JTextField cid;
     private javax.swing.JTextField cn;
     private javax.swing.JTextField dob;
     private javax.swing.JTextField doj;
@@ -471,6 +478,7 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -480,7 +488,6 @@ public class updateDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField mob;
     private javax.swing.JPasswordField p;
     private javax.swing.JTextField pc;

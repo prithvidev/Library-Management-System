@@ -56,13 +56,13 @@ public final class dashboard extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
         addnew = new javax.swing.JButton();
-        dd = new javax.swing.JLabel();
         userkaname = new javax.swing.JLabel();
         update = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
+        dd = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -212,10 +212,6 @@ public final class dashboard extends javax.swing.JFrame {
         });
         jPanel6.add(addnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 30, 30));
 
-        dd.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        dd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel6.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 120, 20));
-
         userkaname.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         userkaname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         userkaname.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -276,6 +272,10 @@ public final class dashboard extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 28, 24));
+
+        dd.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        dd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 180, 30));
 
         jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 30));
 
@@ -390,7 +390,9 @@ public final class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_updateMouseExited
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        updateDetails ud = new updateDetails(u1,display);
+        ud.setVisible(true);
     }//GEN-LAST:event_updateActionPerformed
 
     /**

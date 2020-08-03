@@ -393,7 +393,7 @@ public class Registration extends javax.swing.JFrame {
         q.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         q.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         q.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(q, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 386, 132, 150));
+        jPanel1.add(q, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 132, 150));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/go-back.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -436,7 +436,7 @@ public class Registration extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 432, 114, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 114, -1));
 
         a2.setText("Last Name");
         jPanel1.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 80, 18));
@@ -472,7 +472,7 @@ public class Registration extends javax.swing.JFrame {
         jPanel1.add(a11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 90, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 540));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

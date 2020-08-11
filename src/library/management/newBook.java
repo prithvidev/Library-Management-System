@@ -23,8 +23,14 @@ public class newBook extends javax.swing.JFrame {
      * Creates new form newBook
      */
     int xmouse , ymouse;
+    String hq, l;
     public newBook() {
         initComponents();
+    }
+
+    newBook(String u1, String display) {
+        hq = u1;
+        l = display;
     }
 
     /**
@@ -229,7 +235,7 @@ public class newBook extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
-        dashboard h = new dashboard();
+        dashboard h = new dashboard(hq,l);
         h.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 

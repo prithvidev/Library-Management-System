@@ -23,10 +23,16 @@ public class statistics extends javax.swing.JFrame {
     /**
      * Creates new form statistics
      */
+    String p , g;
     public statistics() {
         initComponents();
         issuetableDisplay();
         returntableDisplay();
+    }
+
+    statistics(String u1, String display) {
+        p = u1;
+        g = display;
     }
     
     public final void issuetableDisplay(){
@@ -226,7 +232,7 @@ public class statistics extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         this.dispose();
-        dashboard h = new dashboard();
+        dashboard h = new dashboard(p, g);
         h.setVisible(true);
     }                                        
 

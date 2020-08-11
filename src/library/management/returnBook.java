@@ -28,9 +28,15 @@ public class returnBook extends javax.swing.JFrame {
      * Creates new form returnBook
      */
     int xmouse, ymouse;
+    String ll, pp;
     public returnBook() {
         initComponents();
         
+    }
+
+    returnBook(String u1, String display) {
+        ll = u1;
+        pp = display;
     }
     private void add(){
         String cust_id = cid.getText();

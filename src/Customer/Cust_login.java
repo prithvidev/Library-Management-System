@@ -23,8 +23,15 @@ public class Cust_login extends javax.swing.JFrame {
      * Creates new form login
      */
     int xmouse , ymouse;
+    String aa, s;
     public Cust_login() {
         initComponents();
+    }
+
+    public Cust_login(String uid, String name) {
+        initComponents();
+        aa = uid;
+        s = name;
     }
 
     /**

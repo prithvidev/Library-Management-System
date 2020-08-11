@@ -5,10 +5,12 @@
  */
 package library.management;
 
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -16,8 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author PrithviDevKumar
  */
-public class userinfo extends javax.swing.JFrame {
-
+public final class userinfo extends javax.swing.JFrame {
     /**
      * Creates new form userinfo
      */
@@ -26,11 +27,13 @@ public class userinfo extends javax.swing.JFrame {
     String display1;
     public userinfo() {
         initComponents();
+        profilepic();
     }
 
     userinfo(String u1, String display) {
         initComponents();
         userid = u1;
+        display1 = display;
         profilepic();
     }
     public void profilepic(){
@@ -57,7 +60,7 @@ public class userinfo extends javax.swing.JFrame {
             }
             else{JOptionPane.showMessageDialog(this,"ERROR");}
         }
-        catch(Exception ex){}
+        catch(HeadlessException | SQLException ex){}
     }
 
     /**
@@ -275,7 +278,6 @@ public class userinfo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -283,9 +285,9 @@ public class userinfo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        dashboard h = new dashboard(userid, display1);
-        this.dispose();
-        h.setVisible(true);
+    this.setVisible(false);
+    dashboard db = new dashboard(userid, display1);
+    db.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -327,10 +329,8 @@ public class userinfo extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new userinfo().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new userinfo().setVisible(true);
         });
     }
 

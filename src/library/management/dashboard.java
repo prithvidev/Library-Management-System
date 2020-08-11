@@ -21,15 +21,20 @@ public final class dashboard extends javax.swing.JFrame {
     String display;
     public dashboard() {
         initComponents();
+        userkaname.setText(display);
     }
     
      dashboard(String u, String d) {
         initComponents();
+        dd.setVisible(false);
         u1 = u;
         display = d;
         userkaname.setText(display);
-        
     }
+     
+    
+     
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,13 +61,14 @@ public final class dashboard extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
         addnew = new javax.swing.JButton();
-        userkaname = new javax.swing.JLabel();
         update = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
+        userkaname = new javax.swing.JLabel();
         dd = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -110,6 +116,11 @@ public final class dashboard extends javax.swing.JFrame {
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/about.png"))); // NOI18N
         jButton29.setContentAreaFilled(false);
         jButton29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 336, 92, 80));
 
         jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/issue.png"))); // NOI18N
@@ -212,12 +223,6 @@ public final class dashboard extends javax.swing.JFrame {
         });
         jPanel6.add(addnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 30, 30));
 
-        userkaname.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        userkaname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        userkaname.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        userkaname.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jPanel6.add(userkaname, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 120, 20));
-
         update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Customer/update.png"))); // NOI18N
         update.setContentAreaFilled(false);
         update.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -273,11 +278,20 @@ public final class dashboard extends javax.swing.JFrame {
         });
         jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 28, 24));
 
-        dd.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        dd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 180, 30));
+        userkaname.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        userkaname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        userkaname.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userkaname.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel1.add(userkaname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 180, 30));
 
         jPanel6.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 30));
+
+        dd.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        dd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 100, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/library/management/cool-background (2).png"))); // NOI18N
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,9 +303,7 @@ public final class dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(568, 480));
@@ -309,7 +321,7 @@ public final class dashboard extends javax.swing.JFrame {
 
     private void jButton31jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31jButton7ActionPerformed
         this.dispose();
-        returnBook rb = new returnBook();
+        returnBook rb = new returnBook(u1, display);
         JOptionPane.showMessageDialog(this,"Enter Customer ID and Book ID to find details","Return Book",JOptionPane.INFORMATION_MESSAGE);
         rb.setVisible(true);
     }//GEN-LAST:event_jButton31jButton7ActionPerformed
@@ -322,7 +334,7 @@ public final class dashboard extends javax.swing.JFrame {
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         this.dispose();
-        newBook nb = new newBook();
+        newBook nb = new newBook(u1, display);
         nb.setVisible(true);
                 
     }//GEN-LAST:event_jButton27ActionPerformed
@@ -371,22 +383,23 @@ public final class dashboard extends javax.swing.JFrame {
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         this.dispose();
-        issuebook ib = new issuebook();
+        issuebook ib = new issuebook(u1, display);
         ib.setVisible(true);
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         this.dispose();
-        statistics st = new statistics();
+        statistics st = new statistics(u1, display);
         st.setVisible(true);
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
-        // TODO add your handling code here:
+        dd.setVisible(true);
+        dd.setText("Update Details");
     }//GEN-LAST:event_updateMouseEntered
 
     private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
-        // TODO add your handling code here:
+        dd.setVisible(false);
     }//GEN-LAST:event_updateMouseExited
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
@@ -394,6 +407,10 @@ public final class dashboard extends javax.swing.JFrame {
         updateDetails ud = new updateDetails(u1,display);
         ud.setVisible(true);
     }//GEN-LAST:event_updateActionPerformed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton29ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,6 +452,7 @@ public final class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel29;

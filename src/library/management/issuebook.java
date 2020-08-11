@@ -27,8 +27,14 @@ public class issuebook extends javax.swing.JFrame {
      */
     int xmouse, ymouse;
     String dateofissue, dateofreturn;
+    String dd , ff;
     public issuebook() {
         initComponents();
+    }
+
+    issuebook(String u1, String display) {
+        dd = u1;
+        ff = display;
     }
 
     /**
@@ -439,7 +445,7 @@ public class issuebook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        dashboard h = new dashboard();
+        dashboard h = new dashboard(dd , ff);
         this.dispose();
         h.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
